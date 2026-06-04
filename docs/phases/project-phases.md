@@ -4,12 +4,12 @@
 
 | Phase | Name | Duration | Tasks | Status |
 |-------|------|----------|-------|--------|
-| M1 | Foundation & Authentication | 2 weeks | 20 | 🔲 |
-| M2 | Core POS Selling Flow | 3 weeks | 24 | 🔲 |
-| M3 | Hold, Return & Shift Management | 2 weeks | 14 | 🔲 |
-| M4 | Polish, Bluetooth Print & Launch | 2 weeks | 12 | 🔲 |
+| M1 | Foundation & Authentication | 2 weeks | 20 | ✅ COMPLETED (2026-06-04) |
+| M2 | Core POS Selling Flow | 3 weeks | 24 | ✅ COMPLETED (2026-06-04) |
+| M3 | Hold, Return & Shift Management | 2 weeks | 14 | ✅ COMPLETED (2026-06-04) |
+| M4 | Polish, Bluetooth Print & Launch | 2 weeks | 12 | 🔲 Pending (hardware testing required) |
 
-**Total: ~9 weeks parallel with backend work**
+**M1–M3 complete. M4 requires physical hardware (Bluetooth printer, EAS build).**
 
 ---
 

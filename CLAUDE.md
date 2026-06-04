@@ -51,7 +51,13 @@ The mobile app uses the same API as the web POS:
 
 ## Build Status
 
-**Not started** — See `docs/STATUS.md`
+**Phase 7 M1 (Foundation): COMPLETED** (2026-06-04) — Project scaffold, Expo Router, auth store, cart store, PIN login, shift open/close screens  
+**Phase 7 M2 (POS Selling Flow): COMPLETED** (2026-06-04) — Product grid, barcode scanner, cart, unit picker, checkout (cash/transfer/card/split), WhatsApp receipt  
+**Phase 7 M3 (Hold & Shift): COMPLETED** (2026-06-04) — Held carts screen, stats screen, shift management  
+**Phase 7 M4 (Polish & Launch): PENDING** — Requires hardware testing (Bluetooth printer, EAS build, app store submission)  
+**Current Status:** All screens and logic implemented — ready for `npm install` + `expo start`
+
+See `docs/STATUS.md`
 
 ## Related Projects
 

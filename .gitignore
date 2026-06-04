@@ -24,3 +24,11 @@ dist-ssr
 *.sw?
 
 .env
+.env.local
+.expo/
+google-service-account.json
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
