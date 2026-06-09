@@ -13,14 +13,7 @@ import { useAuthStore } from '@/store/auth.store'
 import { useUIStore } from '@/store/ui.store'
 import { shiftsService } from '@/services/shifts.service'
 import { formatNaira } from '@/utils/format-currency'
-
-interface ActiveShift {
-  id: string
-  openedAt: string
-  openingFloat: number
-  salesCount?: number
-  totalRevenue?: number
-}
+import type { ActiveShift } from '@/types'
 
 function formatDuration(start: string): string {
   const ms = Date.now() - new Date(start).getTime()

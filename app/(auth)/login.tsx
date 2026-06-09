@@ -15,11 +15,7 @@ import { useAuthStore } from '@/store/auth.store'
 import { useUIStore } from '@/store/ui.store'
 import { COMPANY_ID } from '@/constants/config'
 import { shiftsService } from '@/services/shifts.service'
-
-interface CompanyConfig {
-  name: string
-  id: string
-}
+import type { CompanyConfig } from '@/types'
 
 export default function LoginScreen() {
   const setSession  = useAuthStore((s) => s.setSession)

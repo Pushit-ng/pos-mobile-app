@@ -18,13 +18,7 @@ import { useUIStore } from '@/store/ui.store'
 import { shiftsService } from '@/services/shifts.service'
 import { clearAuthToken } from '@/lib/axios'
 import { formatNaira, nairaToKobo } from '@/utils/format-currency'
-
-interface ShiftData {
-  id: string
-  expectedCash: number    // kobo
-  expectedTransfer: number
-  expectedCard: number
-}
+import type { ShiftData } from '@/types'
 
 export default function ShiftCloseScreen() {
   const clearSession = useAuthStore((s) => s.clearSession)

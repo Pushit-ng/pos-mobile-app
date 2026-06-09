@@ -34,9 +34,9 @@ function normaliseProduct(raw: RawProduct): CartProduct {
   return {
     ...raw,
     id: raw.id ?? raw._id ?? '',
-    sellingUnits: raw.sellingUnits?.map((u) => ({
-      ...u,
-      id: u.id ?? u._id ?? '',
+    sellingUnits: raw.sellingUnits?.map((sellingUnit) => ({
+      ...sellingUnit,
+      id: sellingUnit.id ?? sellingUnit._id ?? '',
     })),
   }
 }

@@ -23,8 +23,7 @@ import { useAuthStore } from '@/store/auth.store'
 import { useUIStore } from '@/store/ui.store'
 import { transactionsService } from '@/services/transactions.service'
 import { buildWhatsAppReceipt } from '@/utils/receipt'
-
-type PaymentMethod = 'cash' | 'transfer' | 'card' | 'split'
+import type { PaymentMethod } from '@/types'
 
 interface CheckoutSheetProps {
   visible: boolean
@@ -162,15 +161,15 @@ export default function CheckoutSheet({ visible, onClose, onSuccess }: CheckoutS
     if (!invoiceResult) return
     const receiptText = buildWhatsAppReceipt({
       invoiceId: invoiceResult,
-      items: saleItems.map((i) => ({
-        name: i.product.name,
-        unitName: i.sellingUnitName,
-        qty: i.sellingUnitQty,
-        lineTotal: i.lineTotal,
+      items: saleItems.map((saleItem) => ({
+        name: saleItem.product.name,
+        unitName: saleItem.sellingUnitName,
+        qty: saleItem.sellingUnitQty,
+        lineTotal: saleItem.lineTotal,
       })),
-      subtotal: saleItems.reduce((s, i) => s + i.lineTotal, 0),
+      subtotal: saleItems.reduce((s, saleItem) => s + saleItem.lineTotal, 0),
       vatAmount: 0,
-      total: saleItems.reduce((s, i) => s + i.lineTotal, 0),
+      total: saleItems.reduce((s, saleItem) => s + saleItem.lineTotal, 0),
       paymentMethod:
         method === 'cash' ? 'Cash' : method === 'transfer' ? 'Bank Transfer' : 'Card POS',
     })
@@ -221,14 +220,14 @@ export default function CheckoutSheet({ visible, onClose, onSuccess }: CheckoutS
 
             {/* Payment method tabs */}
             <View style={styles.tabs}>
-              {(['cash', 'transfer', 'card'] as PaymentMethod[]).map((m) => (
+              {(['cash', 'transfer', 'card'] as PaymentMethod[]).map((paymentMethod) => (
                 <TouchableOpacity
-                  key={m}
-                  style={[styles.tab, method === m && styles.tabActive]}
-                  onPress={() => setMethod(m)}
+                  key={paymentMethod}
+                  style={[styles.tab, method === paymentMethod && styles.tabActive]}
+                  onPress={() => setMethod(paymentMethod)}
                 >
-                  <Text style={[styles.tabText, method === m && styles.tabTextActive]}>
-                    {m === 'cash' ? 'Cash' : m === 'transfer' ? 'Transfer' : 'Card POS'}
+                  <Text style={[styles.tabText, method === paymentMethod && styles.tabTextActive]}>
+                    {paymentMethod === 'cash' ? 'Cash' : paymentMethod === 'transfer' ? 'Transfer' : 'Card POS'}
                   </Text>
                 </TouchableOpacity>
               ))}
