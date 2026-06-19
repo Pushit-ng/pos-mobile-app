@@ -68,6 +68,8 @@ export default function RootLayout() {
               },
               token,
             )
+            // Hide splash before biometric prompt so the Face ID dialog is visible
+            await SplashScreen.hideAsync()
             // Read from store directly — avoid stale closure since AsyncStorage
             // hydration is async and biometricEnabled may still be false at mount time.
             if (useSettingsStore.getState().biometricEnabled) {
@@ -89,6 +91,7 @@ export default function RootLayout() {
       } catch {
         router.replace('/(auth)/login')
       } finally {
+        // hideAsync is idempotent — safe to call again if not already hidden
         await SplashScreen.hideAsync()
       }
     }
