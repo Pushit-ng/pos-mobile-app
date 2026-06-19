@@ -4,6 +4,7 @@ import {
   Text,
   TouchableOpacity,
   StyleSheet,
+  Platform,
 } from 'react-native'
 import BottomSheet, { BottomSheetView, BottomSheetBackdrop } from '@gorhom/bottom-sheet'
 import type { BottomSheetDefaultBackdropProps } from '@gorhom/bottom-sheet/lib/typescript/components/bottomSheetBackdrop/types'
@@ -50,7 +51,7 @@ export default function UnitPickerSheet({ product, onClose }: UnitPickerSheetPro
 
   function handleAdd() {
     if (!product || !selectedUnit) return
-    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success)
+    if (Platform.OS !== 'web') Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success)
     addItem(product, selectedUnit, qty, selectedUnit.sellingPrice)
     pushToast(`${product.name} added to cart`, 'success')
     onClose()
@@ -59,7 +60,7 @@ export default function UnitPickerSheet({ product, onClose }: UnitPickerSheetPro
 
   function adjustQty(delta: number) {
     setQty((prev) => Math.max(1, prev + delta))
-    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
+    if (Platform.OS !== 'web') Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
   }
 
   const lineTotal = selectedUnit ? selectedUnit.sellingPrice * qty : 0
@@ -91,7 +92,7 @@ export default function UnitPickerSheet({ product, onClose }: UnitPickerSheetPro
                   ]}
                   onPress={() => {
                     setSelectedUnit(unit)
-                    Haptics.selectionAsync()
+                    if (Platform.OS !== 'web') Haptics.selectionAsync()
                   }}
                 >
                   <Text style={styles.unitName}>{unit.name}</Text>

@@ -9,6 +9,7 @@ import {
   Switch,
   Alert,
   Linking,
+  Platform,
 } from 'react-native'
 import BottomSheet, {
   BottomSheetView,
@@ -173,7 +174,7 @@ export default function CheckoutSheet({ visible, onClose, onSuccess }: CheckoutS
       const totalAmount = total
       setSaleItems(snapshotItems)
       setSaleCustomer(customer)
-      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success)
+      if (Platform.OS !== 'web') Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success)
       setInvoiceResult(invoiceId)
       clearCart()
       pushToast(`Sale complete — ${invoiceId}`, 'success')
@@ -196,7 +197,7 @@ export default function CheckoutSheet({ visible, onClose, onSuccess }: CheckoutS
         }).catch(() => {}) // non-fatal
       }
     } catch (err: unknown) {
-      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error)
+      if (Platform.OS !== 'web') Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error)
       const msg =
         (err as { response?: { data?: { message?: string } } })?.response?.data?.message ??
         'Failed to complete sale'

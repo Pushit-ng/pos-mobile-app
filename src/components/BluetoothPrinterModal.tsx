@@ -8,6 +8,7 @@ import {
   ActivityIndicator,
   StyleSheet,
   SafeAreaView,
+  Platform,
 } from 'react-native'
 import * as Haptics from 'expo-haptics'
 import { printerService, isPrintingAvailable } from '@/services/printer.service'
@@ -54,7 +55,7 @@ export default function BluetoothPrinterModal({ visible, onClose }: BluetoothPri
     setConnecting(device.address)
     try {
       await printerService.connectDevice(device.address)
-      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success)
+      if (Platform.OS !== 'web') Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success)
       setPairedPrinter(device)
     } catch {
       setError(`Failed to connect to ${device.name}`)

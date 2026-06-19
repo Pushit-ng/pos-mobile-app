@@ -71,9 +71,7 @@
       "fallbackToCacheTimeout": 0,
       "url": "https://u.expo.dev/REPLACE_WITH_YOUR_EAS_PROJECT_ID"
     },
-    "runtimeVersion": {
-      "policy": "appVersion"
-    },
+    "runtimeVersion": "1.0.0",
     "experiments": {
       "typedRoutes": true
     },
